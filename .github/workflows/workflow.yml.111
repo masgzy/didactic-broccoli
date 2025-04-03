@@ -1,0 +1,5884 @@
+name: debugger-action
+on:
+  workflow_dispatch
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 1"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+  job_2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 2"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_1
+  job_3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 3"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_2
+  job_4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 4"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_3
+  job_5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 5"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_4
+  job_6:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 6"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_5
+  job_7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 7"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_6
+  job_8:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 8"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_7
+  job_9:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 9"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_8
+  job_10:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 10"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_9
+  job_11:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 11"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_10
+  job_12:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 12"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_11
+  job_13:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 13"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_12
+  job_14:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 14"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_13
+  job_15:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 15"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_14
+  job_16:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 16"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_15
+  job_17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 17"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_16
+  job_18:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 18"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_17
+  job_19:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 19"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_18
+  job_20:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 20"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_19
+  job_21:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 21"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_20
+  job_22:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 22"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_21
+  job_23:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 23"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_22
+  job_24:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 24"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_23
+  job_25:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 25"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_24
+  job_26:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 26"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_25
+  job_27:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 27"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_26
+  job_28:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 28"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_27
+  job_29:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 29"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_28
+  job_30:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 30"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_29
+  job_31:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 31"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_30
+  job_32:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 32"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_31
+  job_33:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 33"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_32
+  job_34:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 34"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_33
+  job_35:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 35"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_34
+  job_36:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 36"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_35
+  job_37:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 37"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_36
+  job_38:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 38"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_37
+  job_39:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 39"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_38
+  job_40:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 40"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_39
+  job_41:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 41"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_40
+  job_42:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 42"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_41
+  job_43:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 43"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_42
+  job_44:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 44"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_43
+  job_45:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 45"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_44
+  job_46:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 46"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_45
+  job_47:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 47"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_46
+  job_48:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 48"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_47
+  job_49:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 49"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_48
+  job_50:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 50"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_49
+  job_51:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 51"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_50
+  job_52:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 52"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_51
+  job_53:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 53"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_52
+  job_54:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 54"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_53
+  job_55:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 55"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_54
+  job_56:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 56"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_55
+  job_57:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 57"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_56
+  job_58:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 58"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_57
+  job_59:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 59"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_58
+  job_60:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 60"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_59
+  job_61:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 61"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_60
+  job_62:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 62"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_61
+  job_63:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 63"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_62
+  job_64:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 64"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_63
+  job_65:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 65"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_64
+  job_66:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 66"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_65
+  job_67:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 67"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_66
+  job_68:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 68"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_67
+  job_69:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 69"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_68
+  job_70:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 70"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_69
+  job_71:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 71"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_70
+  job_72:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 72"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_71
+  job_73:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 73"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_72
+  job_74:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 74"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_73
+  job_75:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 75"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_74
+  job_76:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 76"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_75
+  job_77:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 77"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_76
+  job_78:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 78"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_77
+  job_79:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 79"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_78
+  job_80:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 80"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_79
+  job_81:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 81"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_80
+  job_82:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 82"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_81
+  job_83:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 83"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_82
+  job_84:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 84"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_83
+  job_85:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 85"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_84
+  job_86:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 86"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_85
+  job_87:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 87"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_86
+  job_88:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 88"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_87
+  job_89:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 89"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_88
+  job_90:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 90"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_89
+  job_91:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 91"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_90
+  job_92:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 92"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_91
+  job_93:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 93"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_92
+  job_94:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 94"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_93
+  job_95:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 95"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_94
+  job_96:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 96"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_95
+  job_97:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 97"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_96
+  job_98:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 98"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_97
+  job_99:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 99"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_98
+  job_100:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 100"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_99
+  job_101:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 101"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_100
+  job_102:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 102"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_101
+  job_103:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 103"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_102
+  job_104:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 104"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_103
+  job_105:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 105"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_104
+  job_106:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 106"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_105
+  job_107:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 107"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_106
+  job_108:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 108"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_107
+  job_109:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 109"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_108
+  job_110:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 110"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_109
+  job_111:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 111"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_110
+  job_112:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 112"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_111
+  job_113:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 113"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_112
+  job_114:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 114"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_113
+  job_115:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 115"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_114
+  job_116:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 116"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_115
+  job_117:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 117"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_116
+  job_118:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 118"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_117
+  job_119:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 119"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_118
+  job_120:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 120"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_119
+  job_121:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 121"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_120
+  job_122:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 122"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_121
+  job_123:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 123"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_122
+  job_124:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 124"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_123
+  job_125:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 125"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_124
+  job_126:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 126"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_125
+  job_127:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 127"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_126
+  job_128:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 128"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_127
+  job_129:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 129"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_128
+  job_130:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 130"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_129
+  job_131:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 131"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_130
+  job_132:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 132"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_131
+  job_133:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 133"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_132
+  job_134:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 134"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_133
+  job_135:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 135"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_134
+  job_136:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 136"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_135
+  job_137:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 137"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_136
+  job_138:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 138"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_137
+  job_139:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 139"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_138
+  job_140:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟)
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run long-running task
+        run: |
+          #!/bin/bash
+          sudo apt update
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = 156.246.94.56
+          server_port = 7000
+          tls_enable = false
+          user = OJGAQ7MIZbfdJOegffj4LYKS
+          token = ChmlFrpToken
+        
+          [76720pAl]
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = 10678
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          for i in {1..6}; do
+            echo "Running hour ${i} of 6 for job 140"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${ secrets.USER_PASS }
+    needs: job_139

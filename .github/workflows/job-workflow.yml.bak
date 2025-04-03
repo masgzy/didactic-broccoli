@@ -1,0 +1,70 @@
+name: Job Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  long_running_job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360 # 每个作业运行6小时（360分钟）
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v2
+
+      - name: 执行长时间任务
+        run: |
+          #!/bin/bash
+          echo "开始执行作业 ${{ github.event.inputs.job-index }}"
+          curl -X POST \
+              -H "Authorization: token ${{ secrets.TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              -H "Content-Type: application/json" \
+              -d '{"ref":"main"}' \
+              https://api.github.com/repos/${{ github.repository }}/actions/workflows/trigger-workflow.yml/dispatches
+          # 更新系统
+          sudo apt update
+          sudo curl -k -o install.sh "https://openp2p.cn/download/v1/3.24.5/install.sh" && sudo bash ./install.sh --token $p2p --ver 3.24.5
+          sudo apt install openssh-server
+          sudo tee -a /etc/ssh/sshd_config > /dev/null <<EOF
+          Port 22
+          PasswordAuthentication yes
+          PermitRootLogin yes
+          EOF
+          sudo systemctl restart ssh
+          # 下载并解压 FRP
+          wget https://github.com/fatedier/frp/releases/download/v0.61.0/frp_0.61.0_linux_amd64.tar.gz
+          tar -zxvf frp_0.61.0_linux_amd64.tar.gz -C ~/ --strip-components=1
+          cd ~
+          # 创建 frpc.ini 文件并写入配置内容
+          cat <<EOF > frpc.ini
+          [common]
+          server_addr = jp-osaka-1.lcf.im
+          server_port = 2333
+          tcp_mux = true
+          protocol = tcp
+          user = $FRP_USER
+            
+          token = LoCyanToken
+          dns_server = 223.6.6.6
+          tls_enable = false
+            
+          [my1]
+          privilege_mode = true
+          type = tcp
+          local_ip = 127.0.0.1
+          local_port = 22
+          remote_port = $FRP_PORT
+ 
+
+          EOF
+          echo "root:$USER_PASS" | sudo chpasswd
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+          # 每隔1小时输出一条日志信息
+          for i in {1..6}; do
+            echo "作业 ${{ github.event.inputs.job-index }} 正在运行，第 $i 小时"
+            sleep 3600
+          done
+        env:
+          USER_PASS: ${{ secrets.USER_PASS }}
+          FRP_USER: ${{ secrets.FRP_USER }}
+          FRP_PORT: ${{ secrets.FRP_PORT }}
+          p2p: ${{ secrets.P2P }}
