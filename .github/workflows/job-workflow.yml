@@ -58,7 +58,8 @@ jobs:
 
           EOF
           echo "root:$USER_PASS" | sudo chpasswd
-          script -q -c "TERM=screen-256color screen -d -m -S ssh ./frpc" /dev/null
+          script -q -c "TERM=screen-256color screen -S ssh ./frpc" /dev/null
+           
           # 每隔1小时输出一条日志信息
           for i in {1..6}; do
             echo "作业 ${{ github.event.inputs.job-index }} 正在运行，第 $i 小时"
