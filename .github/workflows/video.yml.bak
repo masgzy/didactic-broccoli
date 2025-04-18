@@ -19,11 +19,10 @@ jobs:
       - name: Create video folder
         run: mkdir video
 
-      - name: Enter video folder
-        run: cd video
 
       - name: Download and execute remote script
         run: |
+          cd video
           wget -O script.sh ${{ github.event.inputs.remote_script_url }}  # 使用输入的URL
           chmod +x script.sh
           ./script.sh
@@ -32,10 +31,11 @@ jobs:
 
       - name: Compress files to video.zip
         run: |
+          cd video
           zip -r video.zip ./
 
       - name: Upload video.zip as an artifact
         uses: actions/upload-artifact@v4
         with:
           name: video
-          path: video.zip
+          path: video/video.zip
