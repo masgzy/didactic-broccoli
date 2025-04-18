@@ -27,11 +27,11 @@ jobs:
           wget -O script.sh ${{ github.event.inputs.remote_script_url }}  # 使用输入的URL
           chmod +x script.sh
           ./script.sh
+          
 
       - name: Compress files to video.zip
         run: |
-          cd ..
-          zip -r video.zip video/
+          zip -r video.zip ./
 
       - name: Upload video.zip as an artifact
         uses: actions/upload-artifact@v4
