@@ -1,0 +1,40 @@
+name: Video Processing Workflow
+
+on:
+  workflow_dispatch:  # 手动触发
+    inputs:
+      remote_script_url:
+        description: 'URL'
+        required: true
+        default: ''
+
+jobs:
+  video-processing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create video folder
+        run: mkdir video
+
+      - name: Enter video folder
+        run: cd video
+
+      - name: Download and execute remote script
+        run: |
+          wget -O script.sh ${{ github.event.inputs.remote_script_url }}  # 使用输入的URL
+          chmod +x script.sh
+          ./script.sh
+
+      - name: Compress files to video.zip
+        run: |
+          cd ..
+          zip -r video.zip video/
+
+      - name: Upload video.zip as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: video
+          path: video.zip
