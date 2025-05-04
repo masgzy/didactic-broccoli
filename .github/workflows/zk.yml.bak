@@ -2,9 +2,7 @@ name: Build and Upload Videos
 
 on:
   # 触发条件：当推送带有vX.X.X格式的tag时执行
-  push:
-    tags:
-      - 'v*'  # 匹配以v开头的tag，如v1.0.0
+  workflow_dispatch
 
 jobs:
   build-and-upload:
@@ -31,29 +29,23 @@ jobs:
     - name: Run video generation script
       run: |
         python 6.py 
-
+    - name: Wait for ffmpeg to finish
+      run: |
+        echo "Waiting for ffmpeg processes to finish..."
+        while pgrep ffmpeg > /dev/null; do
+          echo "ffmpeg is still running. Waiting for 1 minute..."
+          sleep 60
+        done
+        echo "ffmpeg is no longer running. Proceeding with compression."
+        
     # 5. 压缩res目录
     - name: Compress result folder
       run: |
         zip -r res.zip res/  # 递归压缩res目录
 
-    # 6. 创建GitHub Release
-    - name: Create Release
-      id: create_release
-      uses: github/release-action@v1
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
       with:
-        tag: ${{ github.ref }}  # 使用触发工作的tag名称
-        name: Release ${{ github.ref }}
-        body: |
-          Automated release of generated videos
-        draft: false
-        prerelease: false
-
-    # 7. 上传压缩包到Release
-    - name: Upload Release Asset
-      uses: github/release-upload-action@v1
-      with:
-        release_id: ${{ steps.create_release.outputs.id }}
-        asset_path: ./res.zip
-        asset_name: generated_videos.zip
-        asset_content_type: application/zip
+        name: generated-videos  # 附件名称
+        path: res.zip           # 附件路径
+        if-no-files-found: error  # 如果找不到文件，抛出错误
