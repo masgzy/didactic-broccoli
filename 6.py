@@ -67,7 +67,6 @@ def download_video_with_ffmpeg(video_url, filename):
     
     try:
         subprocess.run(command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        subprocess.wait()
         print(f"[✓] 下载成功: {filename}")
     except subprocess.CalledProcessError as e:
         print(f"[✗] 下载失败: {filename} - {str(e)}")
