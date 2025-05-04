@@ -35,8 +35,9 @@ jobs:
       run: |
         echo "Waiting for ffmpeg processes to finish..."
         while pgrep ffmpeg > /dev/null; do
-          echo "ffmpeg is still running. Waiting for 10 seconds..."
-          sleep 10
+          echo "ffmpeg is still running. Waiting for 1 seconds..."
+          RX1=$(cat /sys/class/net/eth0/statistics/rx_bytes); sleep 1; RX2=$(cat /sys/class/net/eth0/statistics/rx_bytes); RX_DIFF=$((RX2 - RX1)); RX_SPEED_KB=$(echo "scale=2; $RX_DIFF / 1024" | bc); RX_SPEED_MB=$(echo "scale=2; $RX_DIFF / 1024 / 1024" | bc); echo "Download speed: $RX_SPEED_KB KB/s ($RX_SPEED_MB MB/s)";
+          sleep 1
         done
         echo "ffmpeg is no longer running. Proceeding with compression."
         

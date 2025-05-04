@@ -43,7 +43,7 @@ jobs:
     # 5. 压缩res目录
     - name: Compress result folder
       run: |
-        sudo zip -r /mnt/res.zip res/  # 递归压缩res目录
+        sudo zip -r /mnt/res.zip ./res/  # 递归压缩res目录
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
