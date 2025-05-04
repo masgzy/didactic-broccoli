@@ -35,8 +35,8 @@ jobs:
       run: |
         echo "Waiting for ffmpeg processes to finish..."
         while pgrep ffmpeg > /dev/null; do
-          echo "ffmpeg is still running. Waiting for 1 minute..."
-          sleep 5
+          echo "ffmpeg is still running. Waiting for 10 seconds..."
+          sleep 10
         done
         echo "ffmpeg is no longer running. Proceeding with compression."
         

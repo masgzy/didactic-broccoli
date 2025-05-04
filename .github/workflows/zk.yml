@@ -43,11 +43,11 @@ jobs:
     # 5. 压缩res目录
     - name: Compress result folder
       run: |
-        zip -r res.zip res/  # 递归压缩res目录
+        zip -r /mnt/res.zip res/  # 递归压缩res目录
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: generated-videos  # 附件名称
-        path: res.zip           # 附件路径
+        name: res  # 附件名称
+        path: /mnt/res.zip           # 附件路径
         if-no-files-found: error  # 如果找不到文件，抛出错误
