@@ -1,0 +1,4 @@
+bash <(curl -fsSL https://get.hy2.sh/)
+systemctl enable hysteria-server.service
+cp /home/runner/work/didactic-broccoli/didactic-broccoli/config.yaml /etc/hysteria/config.yaml
+systemctl restart hysteria-server.service

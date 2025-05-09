@@ -1,0 +1,83 @@
+{
+  "log": {
+    // 设置日志级别为 "warning"，减少日志输出
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 15678, // 本地端口，确保该端口未被占用
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "f76511bc-d01b-4844-aed7-cc7e1b8a08ed", // 用户ID，用于客户端连接
+            "alterId": 64 // alterId，用于增加连接的多样性
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws", // 使用 WebSocket 传输
+        "wsSettings": {
+          "path": "/win/" // WebSocket 路径，与客户端一致
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom", // 自由出站代理，允许直接连接到目标地址
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole", // 黑洞出站代理，用于丢弃流量
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"], // 阻止访问私有IP地址
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
+        "domain": ["geosite:category-ads"], // 阻止广告域名
+        "outboundTag": "blocked"
+      }
+    ]
+  },
+  "dns": {
+    "hosts": {
+      "domain:kkkkk.org": "kkkkk.org"
+    },
+    "servers": [
+      "1.1.1.1", // Cloudflare DNS
+      {
+        "address": "114.114.114.114", // 国内DNS，优先解析国内域名
+        "port": 53,
+        "domains": [
+          "geosite:cn"
+        ]
+      },
+      "8.8.8.8", // Google DNS
+    ]
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "uplinkOnly": 0,
+        "downlinkOnly": 0
+      }
+    },
+    "system": {
+      "statsInboundUplink": false,
+      "statsInboundDownlink": false,
+      "statsOutboundUplink": false,
+      "statsOutboundDownlink": false
+    }
+  }
+}
