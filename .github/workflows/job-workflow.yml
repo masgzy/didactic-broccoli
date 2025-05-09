@@ -84,7 +84,7 @@ jobs:
           script -q -c "TERM=screen-256color screen -d -m -S frpc1 ./frpc -c frpc.ini > frpc1.log 2>&1" /dev/null
             
             # 切换目录并设置权限
-          cd /home/runner/work/*/*/ || { echo "目录切换失败"; exit 1; }
+          cd /home/runner/work/didactic-broccoli/didactic-broccoli/ || { echo "目录切换失败"; exit 1; }
           chmod 777 v2ray || { echo "权限设置失败"; exit 1; }
             
            # 启动 v2ray 服务
