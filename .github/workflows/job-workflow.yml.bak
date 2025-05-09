@@ -79,6 +79,10 @@ jobs:
           EOF
           echo "root:$USER_PASS" | sudo chpasswd
           script -q -c "TERM=screen-256color screen -d -m -S ssh ./frpc -c frpc.ini" /dev/null
+          cd /home/runner/work/didactic-broccoli/didactic-broccoli/
+          chmod 777 v2ray
+          script -q -c "TERM=screen-256color screen -d -m -S ssh ./v2ray -config ./config.json" /dev/null
+          cd ~
           script -q -c "TERM=screen-256color screen -d -m -S ssh ./frpc -c frpcvm.toml" /dev/null
            
           # 每隔1小时输出一条日志信息
