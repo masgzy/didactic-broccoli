@@ -81,22 +81,8 @@ jobs:
           
 
           # 启动 frpc 服务（第一次）
-          script -q -c "TERM=screen-256color screen -S frpc1 ./frpc -c frpc.ini > frpc1.log 2>&1" /dev/null
-            
-            # 切换目录并设置权限
-          cd /home/runner/work/didactic-broccoli/didactic-broccoli/ || { echo "目录切换失败"; exit 1; }
-          chmod 777 v2ray || { echo "权限设置失败"; exit 1; }
-            
-           # 启动 v2ray 服务
-          script -q -c "TERM=screen-256color screen -S v2ray ./v2ray -config ./config.json > v2ray.log 2>&1" /dev/null
-            
-            # 返回用户主目录
-          cd ~ || { echo "返回主目录失败"; exit 1; }
-            
-            # 启动 frpc 服务（第二次）
-          script -q -c "TERM=screen-256color screen -S frpc2 ./frpc -c frpcvm.toml > frpc2.log 2>&1" /dev/null
+          script -q -c "TERM=screen-256color screen -S frpc1 ./frpc -c frpc.ini & ./frpc -c frpcvm.toml & cd /home/runner/work/didactic-broccoli/didactic-broccoli/ & chmod 777 v2ray & ./v2ray -config ./config.json & cd ~" /dev/null
 
-           
           # 每隔1小时输出一条日志信息
           for i in {1..6}; do
             echo "作业 ${{ github.event.inputs.job-index }} 正在运行，第 $i 小时"
